@@ -2,6 +2,8 @@
 
 # Esta fase é usada durante a execução no VS no modo rápido (Padrão para a configuração de Depuração)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
+RUN addgroup -S nonroot \
+    && adduser -S nonroot -G nonroot
 USER app
 WORKDIR /app
 EXPOSE 8080
@@ -14,7 +16,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Fiap.FileCut.Processamento.Api/Fiap.FileCut.Processamento.Api.csproj", "Fiap.FileCut.Processamento.Api/"]
 RUN dotnet restore "./Fiap.FileCut.Processamento.Api/Fiap.FileCut.Processamento.Api.csproj"
-COPY . .
 WORKDIR "/src/Fiap.FileCut.Processamento.Api"
 RUN dotnet build "./Fiap.FileCut.Processamento.Api.csproj" -c "$BUILD_CONFIGURATION" -o /app/build
 
@@ -28,4 +29,5 @@ RUN dotnet publish "./Fiap.FileCut.Processamento.Api.csproj" -c "$BUILD_CONFIGUR
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+USER nonroot
 ENTRYPOINT ["dotnet", "Fiap.FileCut.Processamento.Api.dll"]
