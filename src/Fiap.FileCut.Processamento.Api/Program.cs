@@ -1,4 +1,5 @@
 
+using Fiap.FileCut.Infra.Api;
 using Fiap.FileCut.Infra.Api.Configurations;
 
 namespace Fiap.FileCut.Processamento.Api
@@ -14,24 +15,13 @@ namespace Fiap.FileCut.Processamento.Api
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddJwtBearerAuthentication();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddEnvCors();
+            builder.ConfigureFileCutProcessamentoApi();
 
             var app = builder.Build();
+            var scope = app.Services.CreateScope();
+            scope.ScopedFileCutProcessamentoApi();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-            app.UseEnvCors();
-
-            app.UseHttpsRedirection();
-
-            app.UseAuth();
+            app.InitializeFileCutProcessamentoApi();
 
             app.MapControllers();
 

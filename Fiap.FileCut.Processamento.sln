@@ -28,6 +28,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Core", "libs\F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.Storage", "libs\Fiap.FileCut\Fiap.FileCut.Infra.Storage\Fiap.FileCut.Infra.Storage.csproj", "{A74CBE37-5752-4DAE-8AF4-FC0F860E3575}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.FileCut.Infra.RabbitMq", "libs\Fiap.FileCut\Fiap.FileCut.Infra.RabbitMq\Fiap.FileCut.Infra.RabbitMq.csproj", "{6DA8BA47-13E7-4809-8E12-59F462E1824C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{84CA3C18-8BD1-4181-B89C-BB678ABF6996}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +58,14 @@ Global
 		{A74CBE37-5752-4DAE-8AF4-FC0F860E3575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A74CBE37-5752-4DAE-8AF4-FC0F860E3575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A74CBE37-5752-4DAE-8AF4-FC0F860E3575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DA8BA47-13E7-4809-8E12-59F462E1824C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DA8BA47-13E7-4809-8E12-59F462E1824C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DA8BA47-13E7-4809-8E12-59F462E1824C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DA8BA47-13E7-4809-8E12-59F462E1824C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CA3C18-8BD1-4181-B89C-BB678ABF6996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CA3C18-8BD1-4181-B89C-BB678ABF6996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CA3C18-8BD1-4181-B89C-BB678ABF6996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CA3C18-8BD1-4181-B89C-BB678ABF6996}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +76,6 @@ Global
 		{2B7A9F0C-34BF-4302-85D8-2D85267134F8} = {C28C69EE-E339-482A-B212-F75DE27EEF90}
 		{321E6FC0-2E2F-4D4A-9FE3-C6190E1FEFFC} = {C28C69EE-E339-482A-B212-F75DE27EEF90}
 		{A74CBE37-5752-4DAE-8AF4-FC0F860E3575} = {C28C69EE-E339-482A-B212-F75DE27EEF90}
+		{6DA8BA47-13E7-4809-8E12-59F462E1824C} = {C28C69EE-E339-482A-B212-F75DE27EEF90}
 	EndGlobalSection
 EndGlobal
