@@ -14,7 +14,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Fiap.FileCut.Processamento.Api/Fiap.FileCut.Processamento.Api.csproj", "Fiap.FileCut.Processamento.Api/"]
+COPY ["libs/Fiap.FileCut/Fiap.FileCut.Infra.Api", "../../libs/Fiap.FileCut/Fiap.FileCut.Infra.Api"]
+COPY ["libs/Fiap.FileCut/Fiap.FileCut.Core", "../../libs/Fiap.FileCut/Fiap.FileCut.Core"]
+COPY ["libs/Fiap.FileCut/Fiap.FileCut.Infra.RabbitMq", "../../libs/Fiap.FileCut/Fiap.FileCut.Infra.RabbitMq"]
+COPY ["libs/Fiap.FileCut/Fiap.FileCut.Infra.Storage", "../../libs/Fiap.FileCut/Fiap.FileCut.Infra.Storage"]
+COPY ["src/Fiap.FileCut.Processamento.Api", "Fiap.FileCut.Processamento.Api"]
 RUN dotnet restore "./Fiap.FileCut.Processamento.Api/Fiap.FileCut.Processamento.Api.csproj"
 WORKDIR "/src/Fiap.FileCut.Processamento.Api"
 RUN dotnet build "./Fiap.FileCut.Processamento.Api.csproj" -c "$BUILD_CONFIGURATION" -o /app/build
