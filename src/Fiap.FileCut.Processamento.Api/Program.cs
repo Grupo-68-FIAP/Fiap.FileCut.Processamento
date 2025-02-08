@@ -2,30 +2,29 @@
 using Fiap.FileCut.Infra.Api;
 using Fiap.FileCut.Infra.Api.Configurations;
 
-namespace Fiap.FileCut.Processamento.Api
+namespace Fiap.FileCut.Processamento.Api;
+
+public static class Program
 {
-    public static class Program
+    public static async Task Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+        // Add services to the container.
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.ConfigureFileCutProcessamentoApi();
+        builder.Services.AddControllers();
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        await builder.ConfigureFileCutProcessamentoApi();
 
-            var app = builder.Build();
-            var scope = app.Services.CreateScope();
-            scope.ScopedFileCutProcessamentoApi();
+        var app = builder.Build();
+        var scope = app.Services.CreateScope();
+        await scope.ScopedFileCutProcessamentoApi();
 
-            app.InitializeFileCutProcessamentoApi();
+        await app.InitializeFileCutProcessamentoApi();
 
-            app.MapControllers();
+        app.MapControllers();
 
-            app.Run();
-        }
+        await app.RunAsync();
     }
 }

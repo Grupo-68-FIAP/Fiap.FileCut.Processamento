@@ -10,10 +10,6 @@ services:
       - OPENID_AUDIENCE=admin-cli
       - OPENID_SECRET=${OPENID_SECRET}
 
-      - SMTP_SERVER=fakemail
-      - SMTP_PORT=1025
-      - SMTP_USERNAME=fakemail-noreplay@test.com
-
       - RABBITMQ_CONNECTION_STRING=amqp://${RABBITMQ_DEFAULT_USER}:${RABBITMQ_DEFAULT_PASS}@rabbitmq:5672
     ports:
       - "8080"
@@ -21,6 +17,7 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${TMP}:/tmp
     networks:
       - local_network
 
